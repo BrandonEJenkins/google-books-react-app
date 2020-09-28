@@ -29,5 +29,8 @@ mongoose.connection.on('connected', () => {
 app.use(morgan('tiny'));
 app.use('/api', routes);
 
+app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));
